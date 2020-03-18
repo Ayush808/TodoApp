@@ -35,8 +35,8 @@ app.use(methodOverride('_method'));
 app.use("/", routes);
 
 //Start Server
-const PORT = process.env.PORT || 5000
+//const PORT = process.env.PORT || 5000
 
-app.listen(PORT, function () {
+app.listen(process.env.PORT, process.env.IP, function () {
     console.log("Todo App Server Has Started! at PORT: " + PORT);
 });
