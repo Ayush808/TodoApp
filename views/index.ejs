@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+    <!-- FOnt Awesome Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/app.css" type="text/css">
+    <link rel="icon" href="img/favicon.ico">
+    <title>ToDoApp</title>
+</head>
+
+<body>
+    <div class="page-header">
+        <h1 class="til" style="font-family: cursive;"><i style="color:dodgerblue;" class="fa fa-calendar-check-o"></i>
+            ToDo List</h1>
+    </div>
+    <div class="container">
+
+        <form class="form" action="/todos" method="post">
+            <div class="form-group">
+                <h2 class="subtit"><i style="color: darkorange;" class="fa fa-plus-square"></i> <b>Add a todo</b></h2>
+                <input class="form-control" type="text" name="description" placeholder="Write your to do here....">
+            </div>
+            <div>
+                <button class="btn btn-success">Add Todo</button>
+            </div>
+        </form>
+
+        <div class="page-header">
+            <h2 class="subtit"><i style="color: indianred" class="fa fa-pencil-square-o"></i> <b>Stuff Todo</b></h2>
+        </div>
+
+        <ul class="list-group">
+            <% for(var i = 0; i < todos.length; i++) { %>
+            <li class="list-group-item"><%= todos[i].description %>
+                <form class="handleTodo" action="/todos/<%= todos[i]._id %>/completed" method="post">
+                    <button style="float: right;" class="btn btn-primary btn-xs">Mark Completed</button>
+                </form>
+                <form class="handleTodo" action="/todos/<%= todos[i]._id %>?_method=DELETE" method="post">
+                    <button style="float: right;" href="/todos/<%= todos[i]._id %>"
+                        class="btn btn-danger btn-xs">Remove</button>
+                </form>
+            </li>
+            <% } %>
+        </ul>
+
+        <div class="page-header done">
+            <h2 class="subtit"><i class="fa fa-thumbs-up" style="color: dodgerblue;"></i> <b>Done</b></h2>
+        </div>
+
+        <ul class="list-group">
+            <% for(var i = 0; i < doneTodos.length; i++) { %>
+            <li class="list-group-item"><%= doneTodos[i].description %> |
+                <form class="handleTodo" action="/todos/<%= doneTodos[i]._id %>/completed" method="post">
+                    <button class="btn btn-primary btn-xs">Mark Not Completed</button>
+                </form>
+                <form class="handleTodo" action="/todos/<%= doneTodos[i]._id %>?_method=DELETE" method="post">
+                    <button href="/todos/<%= doneTodos[i]._id %>" class="btn btn-danger btn-xs">Remove</button>
+                </form>
+            </li>
+            <% } %>
+        </ul>
+
+    </div>
+    <!--End of Container-->
+
+</body>
+
+</html>
