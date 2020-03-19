@@ -5,6 +5,7 @@ const connectDB = require('./config/db.js')
 var methodOverride = require('method-override')
 var routes = require("./routes/routes");
 var app = express();
+const keys = require('./config/keys')
 
 //Connect to MongoDB
 // mongoose.Promise = global.Promise;
@@ -35,8 +36,6 @@ app.use(methodOverride('_method'));
 app.use("/", routes);
 
 //Start Server
-const PORT = process.env.PORT || 5000
-
-app.listen(PORT, process.env.IP, function () {
-    console.log("Todo App Server Has Started! at PORT: " + PORT);
+app.listen(process.env.PORT || keys.port, process.env.IP, function () {
+    console.log("Todo App Server Has Started! at PORT: " + 5000);
 });

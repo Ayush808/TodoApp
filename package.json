@@ -5,8 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "server": "nodemon app",
-    "dev": "\"npm run server\""
+    "server": "env-cmd ./config/dev.env nodemon app"
   },
   "keywords": [
     "express",
@@ -28,6 +27,7 @@
     "mongoose": "^5.9.5"
   },
   "devDependencies": {
+    "env-cmd": "^10.1.0",
     "nodemon": "^2.0.2"
   }
 }
