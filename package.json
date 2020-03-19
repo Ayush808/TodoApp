@@ -4,8 +4,9 @@
   "description": "its an app where one can add its task and delete the one and manage its tasks also mark it done or undone",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node app",
+    "server": "nodemon app",
+    "dev": "\"npm run server\""
   },
   "keywords": [
     "express",
